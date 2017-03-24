@@ -20,7 +20,7 @@ exports.read = (req, res) => {
 
 exports.insert = (req, res) => {
 
-    const dados = req.body.data;
+    const dados = req.body;
 
     model.Produto
         .build(
@@ -37,12 +37,12 @@ exports.insert = (req, res) => {
 
 exports.update = (req, res) => {
 
-    const dados = req.body.data;
+    const dados = req.body;
 
     model.Produto
         .update(dados, {
             where: {
-                id: dados.params.id
+                id: req.query.id
             }
         })
         .then((data) => {
@@ -55,7 +55,7 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
 
-    const dados = req.body.data;
+    const dados = req.body;
 
     model.Produto
         .destroy({
